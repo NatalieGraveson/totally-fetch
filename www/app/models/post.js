@@ -20,8 +20,8 @@ export default class Post {
                 <p class="card-text">${this.description} <br> ${this.timestamp}</p>
                 <button>SO FETCH${this.upvote}</button>
                 <button>IT'S NOT GONNA HAPPEN ${this.downvote}</button>
+                <section id="comments"></section>
             </div>
         </div>`
-
   }
 }

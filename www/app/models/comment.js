@@ -7,9 +7,6 @@ export default class Comment {
     this.description = data.description
   }
 
-
-
-
   getTemplate() {
     return `
         <div class="card">
