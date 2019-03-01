@@ -2,7 +2,7 @@ import PostService from "./postService.js";
 
 //private
 
-let _ps = new PostService
+let _ps = new PostService()
 
 function drawPost() {
   document.getElementById('posts').innerHTML = _ps.Post.getTemplate();

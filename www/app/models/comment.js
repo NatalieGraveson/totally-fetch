@@ -1,5 +1,6 @@
 export default class Comment {
   constructor(data) {
+    console.log('comment model')
     this.name = data.name
     this._id = data._id
     this.upvote = data.upvote

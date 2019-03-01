@@ -1,3 +1,5 @@
+import Comment from "../../models/comment.js";
+
 // @ts-ignore
 let _commentApi = axios.create({
   baseURL: "/api"
@@ -9,7 +11,7 @@ let _state = {
 };
 
 let _subscribers = {
-  posts: [],
+  comments: [],
 };
 
 function _setState(prop, val) {
@@ -23,23 +25,23 @@ export default class CommentService {
     _subscribers[prop].push(fn)
   }
 
-  get Comments() {
-    return _state.posts.map(c => new Comment(c))
+  get Comment() {
+    return _state.comments.map(c => new Comment(c))
   }
 
   createComment(comment) {
-    _commentApi.post('comments', comment)
+    _commentApi.create('comments', comment)
       .then(res => {
-        _state.posts.push(res.data)
+        _state.comments.push(res.data)
         _setState('comments', _state.comments)
       })
   }
 
   constructor() {
     console.log('hello, I\'m the CS constructor');
-    _commentApi.get('posts')
+    _commentApi.get('comments')
       .then(res => {
-        _setState('posts', res.data)
+        _setState('comments', res.data)
       })
   }
 
