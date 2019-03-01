@@ -4,7 +4,7 @@ let ObjectId = Schema.Types.ObjectId
 
 let comment = new Schema({
   username: { type: String, required: true, minlength: 3, maxlength: 25 },
-  timestamp: { type: String, required: true },
+  timestamp: { type: String },
   description: { type: String },
   upvote: { type: Number, default: 0 },
   downvote: { type: Number, default: 0 },

@@ -4,9 +4,9 @@ let Schema = mongoose.Schema
 
 let post = new Schema({
   name: { type: String, required: true, minlength: 3, maxlength: 25 },
-  img: { type: String, required: true, default: "http://placehold.it/200/200" },
+  img: { type: String, required: true },
   description: { type: String },
-  timestamp: { type: String, required: true },
+  timestamp: { type: String },
   upvote: { type: Number, default: 0 },
   downvote: { type: Number, default: 0 },
   comments: { type: Schema.Types.ObjectId, ref: "Comment", virtual: true }

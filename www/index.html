@@ -19,8 +19,16 @@
     </div>
 
     <div class="row">
-      <div id="posts" class="col-12">
+      <div class="col-3">
+        <div id="post-form"></div>
       </div>
+
+      <div id="posts" class="col-6">
+
+        <form onsubmit="app.controllers.postController.createPost(event)">
+        </form>
+      </div>
+      <div class="col-3"></div>
 
     </div>
 

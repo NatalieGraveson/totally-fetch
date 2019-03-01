@@ -34,6 +34,7 @@ export default class CommentService {
       .then(res => {
         _state.comments.push(res.data)
         _setState('comments', _state.comments)
+
       })
   }
 

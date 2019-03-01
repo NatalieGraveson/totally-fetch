@@ -38,11 +38,27 @@ export default class PostService {
     return _state.posts[0]
   }
 
-  createPost(post) {
-    _postApi.post('posts', post)
+  getApiPosts() {
+    _postApi.get('/posts')
       .then(res => {
-        _state.posts.push(res.data)
+        let postData = res.data.map(p => new Post(p))
+        _setState('posts', postData)
+      })
+  }
+
+  createPost(rawPost) {
+    let newPost = new Post(rawPost);
+    _postApi.post('posts', newPost)
+      .then(res => {
+        _state.posts.unshift(res.data)
         _setState('posts', _state.posts)
+      })
+  }
+
+  deletePost(id) {
+    _postApi.delete('posts/' + id)
+      .then(res => {
+        this.getApiPosts()
       })
   }
 
@@ -51,10 +67,7 @@ export default class PostService {
 
   constructor() {
     console.log('hello, I\'m the PS constructor');
-    _postApi.get('posts')
-      .then(res => {
-        _setState('posts', res.data)
-      })
+    this.getApiPosts()
   }
 
 }

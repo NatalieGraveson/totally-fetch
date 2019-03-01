@@ -8,8 +8,6 @@ router.get('', (req, res, next) => {
     .catch(err => res.status(400).send(err))
 })
 
-
-
 //ADD POST
 router.post('', (req, res, next) => {
   Comments.create(req.body)
