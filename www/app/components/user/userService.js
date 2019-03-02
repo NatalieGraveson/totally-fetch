@@ -18,15 +18,21 @@ function setState(prop, value) {
 
 //PUBLIC
 
-export default class userService {
+export default class UserService {
   constructor() { }
   addSubscribers(prop, fn) {
     _subscribers[prop].push(fn)
   }
 
-  loadUser
+  //GETS
 
 
+  //GENERAL
+  drawLogin() { }
+
+  login() { }
+
+  logout() { }
 
 
 
