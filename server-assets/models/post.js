@@ -10,7 +10,9 @@ let post = new Schema({
   upvote: { type: Number, default: 0 },
   downvote: { type: Number, default: 0 },
   comments: { type: Schema.Types.ObjectId, ref: "Comment", virtual: true }
-})
+}, {
+    timestamps: true
+  })
 
 post.pre("remove", function (next) {
   Comments.remove({ post: this._id })

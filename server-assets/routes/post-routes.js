@@ -9,6 +9,20 @@ router.get('', (req, res, next) => {
     .catch(err => res.status(400).send(err))
 })
 
+//GET BY ID
+router.get('/:id', (req, res, next) => {
+  Posts.findById(req.params.id)
+    .then(post => {
+      if (post) {
+        return res.status(200).send(post)
+      }
+      res.status(400).send('No Post ad that ID')
+    })
+    .catch(err => {
+      res.status(500).send({ Error: err })
+    })
+})
+
 //ADD POST
 router.post('', (req, res, next) => {
   Posts.create(req.body)
@@ -30,4 +44,23 @@ router.get('/:id/comments', (req, res, next) => {
     .catch(err => res.status(401).send(err))
 })
 
-module.exports = { router }  
+//UPVOTE
+router.put('/:id', (req, res, next) => {
+  Posts.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.send('a post has been updated')
+    })
+})
+
+
+
+
+//DOWNVOTE
+
+
+
+
+
+
+
+module.exports = { router }

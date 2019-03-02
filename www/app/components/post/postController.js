@@ -1,6 +1,6 @@
 import PostService from "./postService.js";
 
-//private
+//private 
 
 let _ps = new PostService()
 
@@ -16,38 +16,35 @@ function drawPosts() {
         <input type="text" name="name" placeholder="Name" required>
         <input type="url" name="img" placeholder="Image URL" required>
         <input type="text" name="description" placeholder="Post" required>
-        <button type="submit">Create Post</button>
+        <button class="btn btn-outline-light btn-lg" type="submit">Create Post</button>
     </form>
     `
 }
 
 function drawComments() {
+
   let comments = _ps.Comments;
-  let postId = comments[0]._id
-  console.log(postId)
+  let postId = _ps.ActivePost._id
   let template = '';
   comments.forEach(comment => {
     template += comment.getTemplate()
   })
-  document.getElementById('comments').innerHTML = template;
-  document.getElementById('comment-form').innerHTML = `
-    <form onsubmit="app.controllers.commentController.createComment(event , '${postId}')">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="description" placeholder="Comment" required>
-        <button type="submit">Create Comment</button>
-    </form>
-    `
+  document.getElementById(postId + 'comment-form').innerHTML = `
+  <form onsubmit="app.controllers.postController.createComment(event)">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="text" name="description" placeholder="Comment" required>
+  <button type="submit">Create Comment</button>
+  </form>
+  `
+  document.getElementById(postId + 'comments').innerHTML = template;
 }
 
 //public
 export default class PostController {
   constructor() {
-    console.log('post constructor here')
     _ps.addSubscriber('posts', drawPosts);
-    _ps.addSubscriber('activePost', this.setActive);
     _ps.addSubscriber('comments', drawComments);
     _ps.getApiPosts()
-    //_ps.getApiComments()
   }
   createPost(event) {
     event.preventDefault();
@@ -61,17 +58,15 @@ export default class PostController {
     form.reset()
   }
 
-  createComment(event, id) {
+  createComment(event) {
     event.preventDefault()
-    let data = event.target
+    let form = event.target;
     let newComment = {
-      name: data.name.value,
-      description: data.description.value,
-      _id: id
+      name: form.name.value,
+      description: form.description.value
     }
 
     _ps.createComment(newComment)
-    // @ts-ignore
     form.reset()
   }
 
@@ -83,16 +78,28 @@ export default class PostController {
     _ps.deleteComment(id)
   }
 
-  upvotePost() {
+  upvotePost(id) {
+    _ps.upvotePost(id)
+  }
+
+  downvotePost(id) {
+    _ps.downvotePost(id)
 
   }
 
-  downvotePost() {
-
+  upvoteComment(id) {
+    _ps.upvoteComment(id)
   }
 
-  setActive() {
-    _ps.setActive()
+  downvoteComment(id) {
+    _ps.downvoteComment(id)
   }
 
+  setActive(id) {
+    _ps.setActive(id)
+  }
+
+  sortByVotes() {
+    _ps.sortByVotes()
+  }
 } 

@@ -1,5 +1,5 @@
 .card-img {
-    width: 44%;
+    border-radius: 21px;
 }
 .delete-button {
 width: 14%;
@@ -8,17 +8,85 @@ width: 14%;
 text-align:center;
 font-size: 91px;
 font-weight: 700;
-color:rgb(236, 6, 148);
+color: white;
+text-shadow: 8px 2px black;
 font-family: 'Sedgwick Ave', cursive;
-
-
+background-color: #ef687f;
+margin-bottom: 21px;
 }
-#post-form{
-font-size: 50%;
+.fa-fire {
+color:black;
+text-shadow: 0px 0px
+}
+
+#post-form {
+font-size: 223%;
+text-align: center;
+padding-bottom: 25px;
+}
+
+.top {
+ width: 27vh;
+ height: 20vh;
+ border-radius: 12px;
+}
+.tiptop {
+text-align: center;
+padding-bottom: 22px;
+    background-color: black;
+    padding-top: 22px;
 }
 body {
-background-color: black;
+background-image:url('https://data.whicdn.com/images/260045711/large.png');
+background-attachment: fixed; 
+    overflow-x: hidden;
+   background-size: contain; 
+  width: 100vw; 
+  height: auto;
+} 
+.col-12 {
+    background-color: black;
+            padding-top: 26px;
 }
+.card {
+        border-radius: 10px;
+            /* max-width: 82vh; */
+                margin-top: 14px;
+}
+h5 {
+ font-family: 'Sedgwick Ave', cursive;
+     font-size: 2.5rem;
+    color: #ef687f;
+}
+
+h7 {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 1rem;
+    color: #ef687f;
+    display: flex;
+}
+
+h8 {
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+p {
+    font-family: 'Sedgwick Ave', cursive;
+    font-size: 26px;
+}
+.upvote {
+    font-size: 15px;
+    font-family: 'Sedgwick Ave', cursive;
+}
+.downvote {
+    font-size: 15px;
+    font-family: 'Sedgwick Ave', cursive;
+}
+.delete {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 i {
-color: white;
+    cursor: pointer;
 }
