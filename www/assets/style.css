@@ -2,5 +2,23 @@
     width: 44%;
 }
 .delete-button {
-      width: 14%;
+width: 14%;
+}
+#headline {
+text-align:center;
+font-size: 91px;
+font-weight: 700;
+color:rgb(236, 6, 148);
+font-family: 'Sedgwick Ave', cursive;
+
+
+}
+#post-form{
+font-size: 50%;
+}
+body {
+background-color: black;
+}
+i {
+color: white;
 }
