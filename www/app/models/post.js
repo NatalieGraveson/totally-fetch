@@ -9,9 +9,9 @@ export default class Post {
     this.downvote = data.downvote
     this.comments = data.comments
     this.createdAt = data.createdAt
-    this.date = formatDate()
-    this.time = formatTime()
-    this.updatedAt = data.updatedAt
+    // this.date = formatDate()
+    // this.time = formatTime()
+    // this.updatedAt = data.updatedAt
     this.value = data.value
 
     function formatDate() {
@@ -50,7 +50,7 @@ export default class Post {
     return `
       <div class="card bg-light mb-3 w-75">
         <h5 class="card-title">Fetched by: ${this.name}</h5>
-        <h8>${this.time} ~ ${this.date}</h8>
+        <h8>${this.createdAt}</h8>
         <img class="card-img" src="${this.img}" alt="Card image cap">
         <p class="card-text">${this.description} </p>
         <div class="card-body text-center">
